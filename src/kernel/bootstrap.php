@@ -14,6 +14,12 @@ require_once APP_PATH . "/database/BaseModel.php";
 require_once APP_PATH . "/models/funcionario/FuncionarioModel.php";
 require_once APP_PATH . "/controllers/funcionario/FuncionarioController.php";
 
+require_once APP_PATH . "/models/pessoa/PessoaModel.php";
+require_once APP_PATH . "/controllers/pessoa/PessoaController.php";
+
 $bancoDeDados = new BancoDeDados($conexao);
 $funcionarioModel = new FuncionarioModel($bancoDeDados);
 $funcionarioController = new FuncionarioController($funcionarioModel);
+
+$pessoaModel = new PessoaModel($bancoDeDados);
+$pessoaController = new PessoaController($pessoaModel);
