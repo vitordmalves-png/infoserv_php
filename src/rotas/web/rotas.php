@@ -1,10 +1,10 @@
 <?php
 
 return [
-    ['GET', '/', function () {
-        echo "<h1>Página inicial</h1>";
-        echo "<a href='" . url("/funcionarios") . "'>Funcionários</a>";
-    }],
+
+    ['GET', '/', [$homeController, 'listar']],
+
+    ['GET', '/', [$loginController, 'login']],
 
     ['GET', '/funcionarios', [$funcionarioController, 'listar']],
     ['GET', '/funcionarios/novo', [$funcionarioController, 'novo']],
@@ -13,7 +13,6 @@ return [
     ['POST', '/funcionarios/{id}', [$funcionarioController, 'atualizar']],
     ['POST', '/funcionarios/{id}/deletar', [$funcionarioController, 'deletar']],
 
-
     ['GET', '/pessoas', [$pessoaController, 'listar']],
     ['GET', '/pessoas/novo', [$pessoaController, 'novo']],
     ['POST', '/pessoas', [$pessoaController, 'criar']],
@@ -21,4 +20,3 @@ return [
     ['POST', '/pessoas/{id}', [$pessoaController, 'atualizar']],
     ['POST', '/pessoas/{id}/deletar', [$pessoaController, 'deletar']],
 ];
-
