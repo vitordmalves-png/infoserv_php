@@ -21,19 +21,19 @@
             <img src="https://media.tenor.com/n1AYVbwRmSgAAAAj/alien-alien-dance.gif">
         </div>
         <div>
-            <h1>Login</h1>
+            <h1>Tela de Login</h1>
         </div>
         <div class=">
-        <label for="exampleMenuFormEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleMenuFormEmail1" placeholder="email@example.com">
+        <label for="exampleMenuFormEmail1" class="form-label">Endereço de E-mail</label>
+        <input type="email" class="form-control" id="exampleMenuFormEmail1" placeholder="email@exemplo.com">
         </div>
         <div>
-        <label for="exampleMenuFormPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleMenuFormPassword1" placeholder="Password">
+        <label for="exampleMenuFormPassword1" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="exampleMenuFormPassword1" placeholder="Senha">
         </div>
         <div class="form-field">
         <input type="checkbox" id="checkLabel" class="check" />
-        <label for="checkLabel">Example new checkbox</label>
+        <label for="checkLabel">Salvar Login</label>
         </div>
         <div class="d-flex justify-content-center">
             <button type="button" class="btn-solid theme-primary" href=#>Login</button>
