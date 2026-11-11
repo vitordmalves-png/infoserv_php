@@ -12,12 +12,13 @@ $homeController = new HomeController();
 
 $bancoDeDados = new BancoDeDados($conexao);
 
+$loginController = new LoginController();
+
 $funcionarioModel = new FuncionarioModel($bancoDeDados);
 $funcionarioController = new FuncionarioController($funcionarioModel);
 
 $pessoaModel = new PessoaModel($bancoDeDados);
 $pessoaController = new PessoaController($pessoaModel);
-$loginController = new LoginController();
 
 $pessoaModel = new PessoaModel($bancoDeDados);
 $pessoaController = new PessoaController($pessoaModel);
