@@ -18,12 +18,19 @@ class FuncionarioController extends BaseController
         } catch (Exception $erro) {
             $funcionarios = [];
 
-            $this->mensagemErro("Erro ao listar funcionários: " . $erro->getMessage());
+            $this->mensagemErro("Erro ao listar funcionarios: " . $erro->getMessage());
         }
 
-        $this->view("funcionario/listar", [
-            "funcionarios" => $funcionarios,
-        ]);
+        $dados["pagina"] = "pessoa/listar";
+        $dados["titulo"] = "Sistema Infoserv - Funcionarios";
+        $dados["dados"] = $funcionarios;
+
+        $this->view("principal", $dados);
+
+        // $this->view("pessoa/listar", [
+        //     "pessoas" => $pessoas,
+        // ]);
+        
     }
 
     public function novo(): void
@@ -51,6 +58,7 @@ class FuncionarioController extends BaseController
             $this->redirecionar("/funcionarios/novo");
         }
     }
+    
 
     public function editar(int|string $id): void
     {

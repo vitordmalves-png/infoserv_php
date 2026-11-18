@@ -70,7 +70,7 @@ function renderizarFlashMessages(): void
                     background-color: {$corFundo};
                     color: {$corTexto};
                 '>
-                    " . escapar($mensagem) . "
+                    " . escapar($mensagem) . "&nbsp;<span>&#215;</span>
                 </div>
             ";
         }

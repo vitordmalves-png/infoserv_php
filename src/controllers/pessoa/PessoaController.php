@@ -18,18 +18,24 @@ class PessoaController extends BaseController
         } catch (Exception $erro) {
             $pessoas = [];
 
-            $this->mensagemErro("Erro ao listar funcionários: " . $erro->getMessage());
+            $this->mensagemErro("Erro ao listar pessoas: " . $erro->getMessage());
         }
 
-        $this->view("pessoas/listar", [
-            "pessoas" => $pessoas,
-        ]);
+        $dados["pagina"] = "pessoa/listar";
+        $dados["titulo"] = "Sistema Infoserv - Pessoas";
+        $dados["dados"] = $pessoas;
+
+        $this->view("principal", $dados);
+
+        // $this->view("pessoa/listar", [
+        //     "pessoas" => $pessoas,
+        // ]);
     }
 
     public function novo(): void
     {
         $this->view("pessoa/form", [
-            "titulo" => "Novo funcionário",
+            "titulo" => "Nova Pessoa",
             "action" => url("/pessoas"),
             "pessoa" => new PessoaEntity(),
         ]);
@@ -42,7 +48,7 @@ class PessoaController extends BaseController
 
             $this->salvarEntidade($this->pessoaModel, $pessoa);
 
-            $this->mensagemSucesso("Pessoa cadastrado com sucesso!");
+            $this->mensagemSucesso("Pessoa cadastrada com sucesso!");
 
             $this->redirecionar("/pessoas");
         } catch (Exception $erro) {
@@ -58,7 +64,7 @@ class PessoaController extends BaseController
             $registros = $this->pessoaModel->listarPorId((int) $id);
 
             if (empty($registros)) {
-                $this->mensagemErro("Funcionário não encontrado.");
+                $this->mensagemErro("Pessoa não encontrada.");
 
                 $this->redirecionar("/pessoas");
             }
@@ -66,12 +72,12 @@ class PessoaController extends BaseController
             $pessoa = $this->criarEntidade($this->entity, $registros[0]);
 
             $this->view("pessoa/form", [
-                "titulo" => "Editar funcionário",
-                "action" => url("/pessoa/{$id}"),
+                "titulo" => "Editar pessoa",
+                "action" => url("/pessoas/{$id}"),
                 "pessoa" => $pessoa,
             ]);
         } catch (Exception $erro) {
-            $this->mensagemErro("Erro ao buscar funcionário: " . $erro->getMessage());
+            $this->mensagemErro("Erro ao buscar pessoa: " . $erro->getMessage());
 
             $this->redirecionar("/pessoas");
         }
@@ -84,11 +90,11 @@ class PessoaController extends BaseController
 
             $this->atualizarEntidade($this->pessoaModel, $id, $pessoa);
 
-            $this->mensagemSucesso("Pessoa atualizado com sucesso!");
+            $this->mensagemSucesso("Pessoa atualizada com sucesso!");
 
             $this->redirecionar("/pessoas");
         } catch (Exception $erro) {
-            $this->mensagemErro("Erro ao atualizar funcionário: " . $erro->getMessage());
+            $this->mensagemErro("Erro ao atualizar pessoa: " . $erro->getMessage());
 
             $this->redirecionar("/pessoas/{$id}/editar");
         }
@@ -99,9 +105,9 @@ class PessoaController extends BaseController
         try {
             $this->pessoaModel->excluir((int) $id);
 
-            $this->mensagemSucesso("Funcionário excluído com sucesso!");
+            $this->mensagemSucesso("Pessoa excluída com sucesso!");
         } catch (Exception $erro) {
-            $this->mensagemErro("Erro ao excluir funcionário: " . $erro->getMessage());
+            $this->mensagemErro("Erro ao excluir pessoa: " . $erro->getMessage());
         }
 
         $this->redirecionar("/pessoas");

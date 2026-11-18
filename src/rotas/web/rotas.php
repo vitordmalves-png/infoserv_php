@@ -2,7 +2,8 @@
 
 return [
 
-    ['GET', '/', [$homeController, 'listar']],
+    ['GET', '/', [$homeController, 'index']],
+    ['GET', '/home', [$homeController, 'listar']],
 
     ['GET', '/login', [$loginController, 'listar']],
 
