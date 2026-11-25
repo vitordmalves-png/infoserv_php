@@ -1,3 +1,4 @@
+<script src="<?= PUBLIC_ASSETS ?>/js/pessoas.js"></script>
 <h1>Pessoas</h1>
 
 <?php renderizarFlashMessages(); ?>
@@ -6,11 +7,11 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
+<button id="cadrastarpessoa" type="button" class="btn btn-primary cadrastarpessoa" data-bs-toggle="modal" data-bs-target="#modal">
     Nova pessoa
 </button>
 
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+<div class="modal fade" id="modalPessoa" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -65,7 +66,7 @@
 <?php if (empty($dados)): ?>
     <p>Nenhuma pessoa encontrada.</p>
 <?php else: ?>
-    <table class="table table-striped mb-0" border="1" cellpadding="8">
+    <table id="tabelaPessoas" class="table table-striped mb-0" border="1" cellpadding="8 tabelaPessoas">
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -81,8 +82,8 @@
                 <td><?= escapar($pessoa->getEmail()) ?></td>
                 <td><?= escapar($pessoa->getTelefone()) ?></td>
                 <td>
-                    <button type="button" class="btn btn-warning">Editar</button>
-                    <button type="button" class="btn btn-danger">Excluir</button>
+                    <button value="<?= escapar($pessoa->getId())  ?>" type="button" class="btn btn-warning btnEditar">Editar</button>
+                    <button value="<?= escapar($pessoa->getId())  ?>" type="button" class="btn btn-danger btnExcluir">Excluir</button>
                     </form>
                 </td>
             </tr>
